@@ -69,18 +69,19 @@ TransactAI uses a unique **hybrid approach** combining:
 
 ### Categorization Pipeline
 
+```
 Bank Statement (CSV/Excel)
-↓
-File Parser & Data Cleaning
-↓
-Column Detection & Feature Extraction
-↓
+         ↓
+    File Parser & Data Cleaning
+         ↓
+  Column Detection & Feature Extraction
+         ↓
 DistilBERT Model + Context-Aware Rules
-↓
-Category Prediction + Confidence
-↓
-Analytics, Insights & PDF Report
-
+         ↓
+   Category Prediction + Confidence
+         ↓
+  Analytics, Insights & PDF Report
+```
 
 ---
 
@@ -95,46 +96,53 @@ Analytics, Insights & PDF Report
 ### Setup Instructions
 
 1. **Clone the repository**
-git clone https://github.com/yourusername/transactai.git
-cd transactai
-
+   ```bash
+   git clone https://github.com/yourusername/transactai.git
+   cd transactai
+   ```
 
 2. **Create a virtual environment**
-python -m venv venv
-source venv/bin/activate # On Windows: venv\Scripts\activate
-
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
 
 3. **Install dependencies**
-pip install -r requirements.txt
-
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 4. **Download the trained model**
-
-Place the trained DistilBERT model files in the `expense_model_distilbert/` directory:
-expense_model_distilbert/
-├── config.json
-├── pytorch_model.bin
-├── tokenizer_config.json
-├── vocab.txt
-└── special_tokens_map.json
-
+   
+   Place the trained DistilBERT model files in the `expense_model_distilbert/` directory:
+   ```
+   expense_model_distilbert/
+   ├── config.json
+   ├── pytorch_model.bin
+   ├── tokenizer_config.json
+   ├── vocab.txt
+   └── special_tokens_map.json
+   ```
 
 5. **Ensure model_config.json exists**
-
-This file should contain category mappings in your project root:
-{
-"categories": ["Food", "Shopping", "Travel", ...],
-"id_map": {"0": "Food", "1": "Shopping", ...}
-}
-
+   
+   This file should contain category mappings in your project root:
+   ```json
+   {
+     "categories": ["Food", "Shopping", "Travel", ...],
+     "id_map": {"0": "Food", "1": "Shopping", ...}
+   }
+   ```
 
 ---
 
 ## 💻 Usage
 
 ### Running the Application
-streamlit run app.py
 
+```bash
+streamlit run app.py
+```
 
 The web app will automatically open in your browser at `http://localhost:8501`
 
@@ -176,20 +184,22 @@ The web app will automatically open in your browser at `http://localhost:8501`
 ---
 
 ## 📂 Project Structure
-transactai/
-├── app.py # Main Streamlit application
-├── model_utils.py # Model loading & hybrid prediction logic
-├── file_processors.py # CSV/Excel parsing & cleaning
-├── recommendations.py # Financial insights generation
-├── pdf_generator.py # PDF report creation
-├── requirements.txt # Python dependencies
-├── model_config.json # Category ID mappings
-├── expense_model_distilbert/ # Trained DistilBERT model directory
-│ ├── config.json
-│ ├── pytorch_model.bin
-│ └── tokenizer files
-└── README.md # This file
 
+```
+transactai/
+├── app.py                          # Main Streamlit application
+├── model_utils.py                  # Model loading & hybrid prediction logic
+├── file_processors.py              # CSV/Excel parsing & cleaning
+├── recommendations.py              # Financial insights generation
+├── pdf_generator.py                # PDF report creation
+├── requirements.txt                # Python dependencies
+├── model_config.json               # Category ID mappings
+├── expense_model_distilbert/       # Trained DistilBERT model directory
+│   ├── config.json
+│   ├── pytorch_model.bin
+│   └── tokenizer files
+└── README.md                       # This file
+```
 
 ---
 
@@ -206,25 +216,27 @@ transactai/
 ### Hybrid Enhancement
 
 The system combines neural predictions with expert rules:
-Simplified hybrid logic
+
+```python
+# Simplified hybrid logic
 def predict(transaction_text, credit_amount, debit_amount):
-# Step 1: Get DistilBERT prediction
-category, confidence = distilbert_model.predict(transaction_text)
-
-# Step 2: Apply context-aware rules
-if "cash deposit" in text.lower() and credit_amount > 0:
-    category = "Income"  # Override neural prediction
-
-if category == "Cashback" and "cashback" not in text.lower():
-    category = "Income"  # Fix common misclassification
-
-# Step 3: Use transaction direction
-if credit_amount > 0 and debit_amount == 0:
-    if category not in ["Income", "Cashback"]:
-        category = "Income"  # Credit must be income-related
-
-return category, confidence
-
+    # Step 1: Get DistilBERT prediction
+    category, confidence = distilbert_model.predict(transaction_text)
+    
+    # Step 2: Apply context-aware rules
+    if "cash deposit" in text.lower() and credit_amount > 0:
+        category = "Income"  # Override neural prediction
+    
+    if category == "Cashback" and "cashback" not in text.lower():
+        category = "Income"  # Fix common misclassification
+    
+    # Step 3: Use transaction direction
+    if credit_amount > 0 and debit_amount == 0:
+        if category not in ["Income", "Cashback"]:
+            category = "Income"  # Credit must be income-related
+    
+    return category, confidence
+```
 
 ### Why Hybrid Approach?
 
@@ -289,14 +301,17 @@ Contributions are welcome! Here's how you can help:
 
 1. **Fork the repository**
 2. **Create a feature branch**
-git checkout -b feature/AmazingFeature
-
+   ```bash
+   git checkout -b feature/AmazingFeature
+   ```
 3. **Commit your changes**
-git commit -m 'Add some AmazingFeature'
-
+   ```bash
+   git commit -m 'Add some AmazingFeature'
+   ```
 4. **Push to the branch**
-git push origin feature/AmazingFeature
-
+   ```bash
+   git push origin feature/AmazingFeature
+   ```
 5. **Open a Pull Request**
 
 ### Areas for Contribution
@@ -361,4 +376,3 @@ For detailed documentation on:
 ---
 
 **Built with ❤️ for better personal finance management**
-
