@@ -97,8 +97,8 @@ DistilBERT Model + Context-Aware Rules
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/transactai.git
-   cd transactai
+   https://github.com/namanj2003/TransactAI.git
+   cd TransactAI
    ```
 
 2. **Create a virtual environment**
