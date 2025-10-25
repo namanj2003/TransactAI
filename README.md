@@ -3,7 +3,7 @@
 [![Python](https://img.shields.io/badge/Python-3.8%2B-blue)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.33-red)](https://streamlit.io/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.2-orange)](https://pytorch.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE.md)
 
 **AI-Powered Bank Statement Analysis & Expense Categorization**
 
